@@ -20,7 +20,7 @@ projet_opsnew \
 │   └── Dockerfile \
 
 
-### Méthode 1 : avec Docker en utilisant des conteneurs individuels
+## Méthode 1 : avec Docker en utilisant des conteneurs individuels
 
 ### Pour lancer l'application
 
@@ -37,7 +37,7 @@ projet_opsnew \
         
 #Après avoir créé notre projet strapi via la commande : yarn create strapi-app, via le mode "custom", on définit l'environnement
 
-## Création d'un Dockerfile pour le projet Strapi en se basant sur la doc. Strapi
+### Création d'un Dockerfile pour le projet Strapi en se basant sur la doc. Strapi
 
 3. On construit une image à partir du Dockerfile se situant dans le dossier courant
    
@@ -56,7 +56,7 @@ projet_opsnew \
 
 6. Configuration du frontend React (que l'on détaille davantage dans la méthode 2)
  
-### Méthode 2 : avec Docker Compose
+## Méthode 2 : avec Docker Compose
 
 Avant de créer le fichier docker-compose.yml, nous avons : 
 1. Créé le Dockerfile correspondant à notre projet Strapi
