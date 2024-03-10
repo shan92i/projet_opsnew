@@ -40,6 +40,7 @@ projet_opsnew \
 # Création d'un Dockerfile pour le projet Strapi en se basant sur la doc. Strapi
 
 3. On construit une image à partir du Dockerfile se situant dans le dossier courant
+   
     docker build -t projet_opsnew-strapi .
 
     
