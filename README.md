@@ -8,7 +8,7 @@ Numéros étudiants : 21110777, 21100918
 
 # Structure du projet :
 
-projet_opsnew
+projet_opsnew \
 │── ... (fichiers du projet Strapi) \
 │── Dockerfile \
 │── docker-compose.yml \
