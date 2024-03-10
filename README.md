@@ -26,22 +26,22 @@ projet_opsnew \
 
 1. Créer un docker network (le réseau qui contient nos conteneurs, que l'on fera communiquer)
 
-    docker network create my_network
+        docker network create my_network
     
 2. Lancer Postgresql (les options servent à assurer la communication entre Strapi et sa base de données )
 
-    docker run -dit -p 5432:5432 -e
-    POSTGRES_PASSWORD=safepassword -e
-    POSTGRES_USER=strapi --net
-    my_network --name strapi-pg postgres
-    
+        docker run -dit -p 5432:5432 -e
+        POSTGRES_PASSWORD=safepassword -e
+        POSTGRES_USER=strapi --net
+        my_network --name strapi-pg postgres
+        
 #Après avoir créé notre projet strapi via la commande : yarn create strapi-app, via le mode "custom", on définit l'environnement
 
-# Création d'un Dockerfile pour le projet Strapi en se basant sur la doc. Strapi
+## Création d'un Dockerfile pour le projet Strapi en se basant sur la doc. Strapi
 
 3. On construit une image à partir du Dockerfile se situant dans le dossier courant
    
-    docker build -t projet_opsnew-strapi .
+        docker build -t projet_opsnew-strapi .
 
     
 3.(bis) Lancement de Strapi
@@ -117,7 +117,7 @@ Même en installant une version plus récente de Node.js, avec "nvm install 20" 
 
 On change alors de solution, et au lieu d'upgrader Node.js, on a installé une ancienne version de Vite, qui serait compatible avec la version de Node.js qui était dans le système : 
 
-yarn add vite@3.0.0 --dev
+    yarn add vite@3.0.0 --dev
 
 Tadam ! Le tour est joué, notre projet React est compilé ! 
     
