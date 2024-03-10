@@ -1,0 +1,88 @@
+version: "3"
+services:
+  strapi:
+    container_name: strapi
+    build:
+        context : .
+        dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: strapiDB
+      DATABASE_PORT: 5432
+      DATABASE_NAME: postgres
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: safepassword
+      JWT_SECRET: bwdmkE9MrloiJUGz7oiz5Q==
+      ADMIN_JWT_SECRET: Tj3LkCwzKIok6+zIPKO1OA==
+      APP_KEYS: EabbM6zjrxBTtywZ2Hr3RA==,TJjdzKOMTv/uxBg/WBw9RA==,TE9BcGU6rFBgBUwd2MX4xQ==,/JveKmmdHIjONWO1Q9ZAPA==
+      NODE_ENV: development
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./yarn.lock:/opt/yarn.lock
+      - ./.env:/opt/app/.env
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - "1337:1337"
+    networks:
+      - bruno
+    depends_on:
+      - strapiDB
+
+  strapiDB:
+    container_name: strapiDB
+    platform: linux/amd64 #for platform error on Apple M1 chips
+    restart: unless-stopped
+    env_file: .env
+    image: postgres:12.0-alpine
+    environment:
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: safepassword
+      POSTGRES_DB: postgres
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/ #using a volume
+      #- ./data:/var/lib/postgresql/data/ # if you want to use a bind folder
+
+    ports:
+      - "5432:5432"
+    networks:
+      - bruno
+  
+  frontend:
+    container_name: frontend
+    build:
+        context : ./opsci-strapi-frontend
+        dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - bruno
+    depends_on:
+      - strapiDB
+      
+  dump:
+    container_name: db-dump
+    image: postgres:12.0-alpine
+    env_file: 
+      - .env
+    command: ["sh", "-c", "export PGPASSWORD=safepassword && pg_dumpall -h strapiDB -U strapi > /dump/backup.sql"]
+
+    volumes:
+      - ./dump:/dump
+    depends_on:
+      - strapiDB
+    networks:
+      - bruno
+
+    
+    
+volumes:
+  strapi-data:
+
+networks:
+  bruno:
+    name: bruno
+    driver: bridge  # Correction ici
