@@ -35,7 +35,8 @@ projet_opsnew \
         POSTGRES_USER=strapi --net
         my_network --name strapi-pg postgres
         
-#Après avoir créé notre projet strapi via la commande : yarn create strapi-app, via le mode "custom", on définit l'environnement
+- Après avoir créé notre projet strapi via la commande : yarn create strapi-app
+- Via le mode "custom", on définit l'environnement
 
 ### Création d'un Dockerfile pour le projet Strapi en se basant sur la doc. Strapi
 
