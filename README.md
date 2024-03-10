@@ -9,15 +9,15 @@ Numéros étudiants : 21110777, 21100918
 # Structure du projet :
 
 projet_opsnew
-│── ... (fichiers du projet Strapi)
-│── Dockerfile
-│── docker-compose.yml
-│── README.md (vous êtes ici)
-├── dump
-│   └── backup.sql
-├── opsci-strapi-frontend
-│   ├── ... (fichiers de l'app React)
-│   └── Dockerfile
+│── ... (fichiers du projet Strapi) \
+│── Dockerfile \
+│── docker-compose.yml \
+│── README.md (vous êtes ici) \
+├── dump \
+│   └── backup.sql \
+├── opsci-strapi-frontend \
+│   ├── ... (fichiers de l'app React) \
+│   └── Dockerfile \
 
 
 ### Méthode 1 : avec Docker en utilisant des conteneurs individuels
