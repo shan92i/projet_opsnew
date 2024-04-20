@@ -17,7 +17,7 @@ projet_opsnew \
 │   └── backup.sql \
 ├── opsci-strapi-frontend \
 │   ├── ... (fichiers de l'app React) \
-│   └── Dockerfile \
+│   └── Dockerfile 
 
 
 ## Méthode 1 : avec Docker en utilisant des conteneurs individuels
